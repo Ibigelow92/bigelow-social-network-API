@@ -1,4 +1,5 @@
 const {Schema, Types} = require('mongoose');
+const Model = mongoose.model('Model', schema);
 
 const reactionSchema = new Schema(
     {
@@ -16,7 +17,8 @@ const reactionSchema = new Schema(
             required:true,
         },
         createdAt: {
-            // do date format
+            type: Date,
+            default: Date.now,
         },
     },
     {
@@ -27,4 +29,29 @@ const reactionSchema = new Schema(
     }
 );
 
+Model.prototype.getFormattedCreatedAt = function() {
+    return this.createdAt.toLocaleString();
+  };
+
 module.exports = reactionSchema;
+
+// **Reaction** (SCHEMA ONLY)
+
+// * `reactionId`
+//   * Use Mongoose's ObjectId data type
+//   * Default value is set to a new ObjectId
+
+// * `reactionBody`
+//   * String
+//   * Required
+//   * 280 character maximum
+
+// * `username`
+//   * String
+//   * Required
+
+// * `createdAt`
+//   * Date
+//   * Set default value to the current timestamp
+//   * Use a getter method to format the timestamp on query
+
