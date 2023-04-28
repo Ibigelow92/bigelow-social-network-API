@@ -1,5 +1,10 @@
+//  Imports the Schema and model objects from the Mongoose library. 
+// The Schema object is used to define the structure of a MongoDB document, 
+// The model object is used to create a model based on a schema.
 const { Schema, model } = require('mongoose');
-const User = model('user', userSchema);
+
+// Creates a model called User based on the userSchema object. 
+// The userSchema object is a JavaScript object that defines the structure of the User document. 
 
 const userSchema = new Schema(
     {
@@ -48,6 +53,8 @@ const userSchema = new Schema(
         id: false,
     }
 );
+
+const User = model('User', userSchema);
 
 module.exports = User;
 

@@ -1,5 +1,4 @@
-const {Schema, Types} = require('mongoose');
-const Model = mongoose.model('Model', schema);
+const {Schema, model} = require('mongoose');
 
 const reactionSchema = new Schema(
     {
@@ -29,7 +28,7 @@ const reactionSchema = new Schema(
     }
 );
 
-Model.prototype.getFormattedCreatedAt = function() {
+reactionSchema.methods.getFormattedCreatedAt = function() {
     return this.createdAt.toLocaleString();
   };
 

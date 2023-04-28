@@ -1,4 +1,5 @@
 const { connect, connection } = require('mongoose');
+require ("dotenv").config();
 
 const connectionString =
 // The connection string on the right: where do you get it?

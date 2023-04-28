@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 // Need to reference this for reactions 
 const reactionSchema = require('./reaction-model');
-const Thought = model('Thought', thoughtSchema);
 
 const thoughtSchema = new Schema(
     {
@@ -36,6 +35,12 @@ const thoughtSchema = new Schema(
         id: false,
     }
 );
+
+thoughtSchema.methods.getFormattedCreatedAt = function() {
+    return this.createdAt.toLocaleString();
+  };
+
+const Thought = model('Thought', thoughtSchema);
 
 module.exports = Thought;
 
